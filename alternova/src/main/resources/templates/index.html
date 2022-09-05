@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Bandeja principal</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../static/ccs/bootstrap.min.css" rel="stylesheet"th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" media="(max-width:800px)" href="">
+
+    <style>
+    	
+	    .icons {
+	      display: grid;
+	      max-width: 100%;
+	      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr) );
+	      gap: 1.25rem;
+	    }
+	    .icon {
+	      background-color: var(--bs-light);
+	      border-radius: .25rem;
+	    }
+	    .bi {
+	      margin: .25rem;
+	      font-size: 2.5rem;
+	    }
+	    
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+        
+      }
+    
+		
+    </style>
+    
+
+    
+    <!-- Custom styles for this template -->
+    <link href="..static/css/cheatsheet.css" rel="stylesheet" th:href="@{/css/cheatsheet.css}">
+    <link rel="stylesheet" th:href="@{/font/bootstrap-icons.css}">
+    
+  </head>
+  <body>
+    
+<header class="site-header sticky-top py-1">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="main navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" >ChuckNorrisJokes</a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="offcanvas" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" th:href="@{/prueba}" aria-current="page" >Dashboard</a>
+        </li>
+        
+        </ul>
+        <form class="d-flex" th:action="@{/logout}"method="post">
+        
+          
+          <button class="btn btn-outline-light" type="submit" value = "Cerrar sesión" >Cerrar sesión</button>
+        
+        </form>
+
+      
+    </div>
+  </div>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Principal page</h1>
+    <p class="lead">Select to another joke of Chuck Norris or view your saved jokes</p>
+  </div>
+  <div class = "row">
+	  <div class = "input-group">
+	  	<a class="btn btn-success" th:field="*{Trabajo_realizado}" th:href="@{/getjoke}">Get Joke</a>
+	  	<a class = "btn btn-primary" th:href="@{/favoritesjokes}" type = "button">My Jokes</a>
+	  	
+	  </div>
+	  <form class="needs-validation" validate th:action="@{/savejoke}" method="post">
+	  <div class = "input-group">
+		
+		  <textarea class = "form-control"name = "joke" rows ="3" id = "joke"required></textarea>
+			
+		  <button type = "submit" class = "btn btn-warning">Save</button>
+  		</div>
+	  </form>
+  </div>
+  
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+     
+        <small class="d-block mb-3 text-muted"> 2022</small>
+      </div>
+    
+    </div>
+  </footer>
+</main>
+
+<footer class="container py-5">
+  
+</footer>
+<script th:inline = "javascript">
+/*<![CDATA[*/
+	var joke = /*[[${joke}]]*/ 'default';
+	var jokeinput = document.getElementById("joke");
+	
+	jokeinput.value = joke;
+/*]]>*/
+</script>
+     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+     
+  </body>
+</html>
